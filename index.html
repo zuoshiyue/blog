@@ -59,6 +59,65 @@
       <div id="middlecontent" title class="global-width sidebar-right">
         <section id="main">
   
+    <article id="post-ApacheBench压测" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2024/04/22/ApacheBench%E5%8E%8B%E6%B5%8B/">ApacheBench压测</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/blog/2024/04/22/ApacheBench%E5%8E%8B%E6%B5%8B/" class="article-date">
+  <time datetime="2024-04-22T11:31:41.000Z" itemprop="datePublished">2024-04-22</time>
+</a>
+    
+    
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ApacheBench/" rel="tag">ApacheBench</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag">测试</a></li></ul>
+
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-cloud" itemprop="articleBody">
+      
+        <!-- toc -->
+
+
+
+<!-- tocstop -->
+
+<p>安装</p>
+<ul>
+<li><p>安装</p>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="PLAINTEXT"><figure class="iseeu highlight /plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum -y install httpd-tools</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>查看版本</p>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="SHELL"><figure class="iseeu highlight /shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -V</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>dome</p>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight /json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ab -n <span class="number">1000000</span> -c <span class="number">200</span> -r  <span class="string">&quot;http://localhost:8080/helloworld?name=小明&quot;</span> </span><br></pre></td></tr></table></figure></div>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight /json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#压测命令</span><br><span class="line">ab -n <span class="number">1000000</span> -c <span class="number">1000</span> -r -p data.json -T &#x27;application/json&#x27; <span class="string">&quot;http://localhost:8080/public/regist&quot;</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">#编辑请求数据</span><br><span class="line"># vi data.json</span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"><span class="attr">&quot;account&quot;</span><span class="punctuation">:</span><span class="string">&quot;128983321&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;nickname&quot;</span><span class="punctuation">:</span><span class="string">&quot;小明&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;sex&quot;</span><span class="punctuation">:</span><span class="string">&quot;男&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;age&quot;</span><span class="punctuation">:</span><span class="number">22</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;DFKJDFJDLSDKSKL&amp;%DFSD&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
+<p>参数</p>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight /json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">-n 测试会话中所执行的请求个数<span class="punctuation">,</span>默认仅执行一个请求<span class="punctuation">,</span>如果不指定-t参数，默认执行完所有请求后自动结束压测</span><br><span class="line"></span><br><span class="line">-c 一次产生的请求个数<span class="punctuation">,</span>即同一时间发出多少个请求<span class="punctuation">,</span>默认为一次一个<span class="punctuation">,</span>此参数可以控制对服务器的单位时间内的并发量</span><br><span class="line"></span><br><span class="line">-t 测试所进行的最大秒数<span class="punctuation">,</span>默认为无时间限制....其内部隐含值是<span class="punctuation">[</span>-n <span class="number">50000</span><span class="punctuation">]</span><span class="punctuation">,</span>它可以使对服务器的测试限制在一个固定的总时间以内<span class="punctuation">,</span>如果时间到了，请求个数还未执行完，也会被停止。</span><br><span class="line"></span><br><span class="line">-p 包含了需要POST的数据的文件<span class="punctuation">,</span>数据格式以接口请求参数定义的格式为准<span class="punctuation">,</span>eg. xxx.json</span><br><span class="line">  #json 内容示例： <span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;小明&quot;</span><span class="punctuation">,</span><span class="attr">&quot;sex&quot;</span><span class="punctuation">:</span><span class="string">&quot;男&quot;</span><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">-T POST 数据所使用的Content-type头信息<span class="punctuation">,</span>指定请求参数格式，eg. application/json</span><br><span class="line"></span><br><span class="line">-r 在接口返回失败后，默认会终止压测，添加此参数后压测会继续进行</span><br><span class="line"></span><br><span class="line">-v 设置显示信息的详细程度</span><br><span class="line"></span><br><span class="line">-w 以HTML表格的形式输出结果<span class="punctuation">,</span>默认是白色背景的两列宽度的一张表</span><br><span class="line"></span><br><span class="line">-i 以HTML表格的形式输出结果<span class="punctuation">,</span>默认是白色背景的两列宽度的一张表</span><br><span class="line"></span><br><span class="line">-x 设置属性的字符串<span class="punctuation">,</span>此属性被填入<span class="punctuation">[</span>/table<span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">-y 设置属性的字符串</span><br><span class="line"></span><br><span class="line">-z 设置<span class="punctuation">[</span>table<span class="punctuation">]</span>属性的字符串</span><br><span class="line"></span><br><span class="line">-C 对请求附加一个Cookie行，其典型形式是name=value的参数对<span class="punctuation">,</span>此参数可以重复</span><br><span class="line"></span><br><span class="line">-H 对请求附加额外的头信息<span class="punctuation">,</span>此参数的典型形式是一个有效的头信息行<span class="punctuation">,</span>其中包含了以冒号分隔的字段和值的对(如<span class="string">&quot;Accept-Encoding:zip/zop;8bit&quot;</span>)</span><br><span class="line"></span><br><span class="line">-A HTTP验证<span class="punctuation">,</span>用冒号<span class="punctuation">:</span>分隔传递用户名及密码</span><br><span class="line"></span><br><span class="line">-P 无论服务器是否需要(即是否发送了<span class="number">401</span>认证需求代码)<span class="punctuation">,</span>此字符串都会被发送</span><br><span class="line"></span><br><span class="line">-X 对请求使用代理服务器</span><br><span class="line"></span><br><span class="line">-V 显示版本号并退出</span><br><span class="line"></span><br><span class="line">-k 启用HTTP KeepAlive(长连接)功能<span class="punctuation">,</span>即在一个HTTP会话中执行多个请求<span class="punctuation">,</span>默认为不启用KeepAlive功能</span><br><span class="line"></span><br><span class="line">-d 不显示<span class="string">&quot;percentage served within XX [ms] table&quot;</span>的消息(为以前的版本提供支持)</span><br><span class="line"></span><br><span class="line">-S 不显示中值和标准背离值<span class="punctuation">,</span>且均值和中值为标准背离值的<span class="number">1</span>到<span class="number">2</span>倍时<span class="punctuation">,</span>也不显示警告或出错信息<span class="punctuation">,</span>默认会显示最小值/均值/最大值等(为以前的版本提供支持)</span><br><span class="line"></span><br><span class="line">-g 把所有测试结果写入一个&#x27;gnuplot&#x27;或者TSV(以Tab分隔的)文件</span><br><span class="line"></span><br><span class="line">-e 产生一个以逗号分隔的(CSV)文件<span class="punctuation">,</span>其中包含了处理每个相应百分比的请求所需要(从<span class="number">1</span>%到<span class="number">100</span>%)的相应百分比的(以微秒为单位)时间</span><br><span class="line"></span><br><span class="line">-h 显示使用方法</span><br><span class="line"></span><br><span class="line">-k 发送keep-alive指令到服务器端</span><br></pre></td></tr></table></figure></div>
+
+<p>压测结果分析</p>
+<div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JSON"><figure class="iseeu highlight /json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">This is ApacheBench<span class="punctuation">,</span> Version <span class="number">2.3</span> &lt;$Revision<span class="punctuation">:</span> <span class="number">1430300</span> $&gt;</span><br><span class="line">Copyright <span class="number">1996</span> Adam Twiss<span class="punctuation">,</span> Zeus Technology Ltd<span class="punctuation">,</span> http<span class="punctuation">:</span><span class="comment">//www.zeustech.net/</span></span><br><span class="line">Licensed to The Apache Software Foundation<span class="punctuation">,</span> http<span class="punctuation">:</span><span class="comment">//www.apache.org/</span></span><br><span class="line"></span><br><span class="line">Benchmarking <span class="number">172.25</span><span class="number">.0</span><span class="number">.248</span> (be patient)</span><br><span class="line">Completed <span class="number">1000</span> requests</span><br><span class="line">Completed <span class="number">2000</span> requests</span><br><span class="line">Completed <span class="number">3000</span> requests</span><br><span class="line">Completed <span class="number">4000</span> requests</span><br><span class="line">Completed <span class="number">5000</span> requests</span><br><span class="line">Completed <span class="number">6000</span> requests</span><br><span class="line">Completed <span class="number">7000</span> requests</span><br><span class="line">Completed <span class="number">8000</span> requests</span><br><span class="line">Completed <span class="number">9000</span> requests</span><br><span class="line">Completed <span class="number">10000</span> requests</span><br><span class="line">Finished <span class="number">10000</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software<span class="punctuation">:</span>        </span><br><span class="line">Server Hostname<span class="punctuation">:</span>        <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>  #请求的URL主机名</span><br><span class="line">Server Port<span class="punctuation">:</span>            <span class="number">8080</span>  #请求端口</span><br><span class="line"></span><br><span class="line">Document Path<span class="punctuation">:</span>          /helloworld?name=小明  #请求路径</span><br><span class="line">Document Length<span class="punctuation">:</span>        <span class="number">29</span> bytes  #HTTP响应数据的正文长度</span><br><span class="line"></span><br><span class="line">Concurrency Level<span class="punctuation">:</span>      <span class="number">1000</span> #并发用户数，这是我们设置的参数之一（-c）</span><br><span class="line">Time taken for tests<span class="punctuation">:</span>   <span class="number">129.957</span> seconds  #所有这些请求被处理完成所花费的总时间 单位秒</span><br><span class="line">Complete requests<span class="punctuation">:</span>      <span class="number">10000</span>  #总请求数量，这是我们设置的参数之一（-n）</span><br><span class="line">Failed requests<span class="punctuation">:</span>        <span class="number">0</span>      #表示失败的请求数量</span><br><span class="line">Write errors<span class="punctuation">:</span>           <span class="number">0</span>      #所有请求的响应数据长度总和。包括每个HTTP响应数据的头信息和正文数据的长度</span><br><span class="line">Total transferred<span class="punctuation">:</span>      <span class="number">1500000</span> bytes   #所有请求的响应数据中正文数据的总和，也就是减去了Total transferred中HTTP响应数据中的头信息的长度</span><br><span class="line"></span><br><span class="line">HTML transferred<span class="punctuation">:</span>       <span class="number">290000</span> bytes    #吞吐量，计算公式：Complete requests/Time taken for tests  总请求数/处理完成这些请求数所花费的时间</span><br><span class="line"></span><br><span class="line">Requests per second<span class="punctuation">:</span>    <span class="number">76.95</span> <span class="punctuation">[</span>#/sec<span class="punctuation">]</span> (mean)  #用户平均请求等待时间，计算公式：Time token for tests/（Complete requests/Concurrency Level）。处理完成所有请求数所花费的时间/（总请求数/并发用户数）</span><br><span class="line"></span><br><span class="line">Time per request<span class="punctuation">:</span>       <span class="number">12995.680</span> <span class="punctuation">[</span>ms<span class="punctuation">]</span> (mean) #用户平均请求等待时间，计算公式：Time token for tests/（Complete requests/Concurrency Level）。处理完成所有请求数所花费的时间/（总请求数/并发用户数）</span><br><span class="line"></span><br><span class="line">Time per request<span class="punctuation">:</span>       <span class="number">12.996</span> <span class="punctuation">[</span>ms<span class="punctuation">]</span> (mean<span class="punctuation">,</span> across all concurrent requests)  #服务器平均请求等待时间，计算公式：Time taken for tests/Complete requests，正好是吞吐率的倒数。也可以这么统计：Time per request/Concurrency Level</span><br><span class="line"></span><br><span class="line">Transfer rate<span class="punctuation">:</span>          <span class="number">11.27</span> <span class="punctuation">[</span>Kbytes/sec<span class="punctuation">]</span> received  #表示这些请求在单位时间内从服务器获取的数据长度，计算公式：Total trnasferred/ Time taken for tests，这个统计很好的说明服务器的处理能力达到极限时，其出口宽带的需求量。</span><br><span class="line"></span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean<span class="punctuation">[</span>+/-sd<span class="punctuation">]</span> median   max</span><br><span class="line">Connect<span class="punctuation">:</span>        <span class="number">0</span>   <span class="number">24</span> <span class="number">150.7</span>      <span class="number">0</span>    <span class="number">1003</span></span><br><span class="line">Processing<span class="punctuation">:</span>    <span class="number">73</span> <span class="number">12348</span> <span class="number">2207.1</span>  <span class="number">12966</span>   <span class="number">13916</span></span><br><span class="line">Waiting<span class="punctuation">:</span>       <span class="number">53</span> <span class="number">12348</span> <span class="number">2207.1</span>  <span class="number">12966</span>   <span class="number">13916</span></span><br><span class="line">Total<span class="punctuation">:</span>         <span class="number">73</span> <span class="number">12373</span> <span class="number">2199.0</span>  <span class="number">12968</span>   <span class="number">14023</span></span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  <span class="number">50</span>%  <span class="number">12968</span> #<span class="number">50</span>%的请求在<span class="number">13</span>秒内返回</span><br><span class="line">  <span class="number">66</span>%  <span class="number">13005</span> </span><br><span class="line">  <span class="number">75</span>%  <span class="number">13031</span></span><br><span class="line">  <span class="number">80</span>%  <span class="number">13049</span></span><br><span class="line">  <span class="number">90</span>%  <span class="number">13109</span></span><br><span class="line">  <span class="number">95</span>%  <span class="number">13173</span></span><br><span class="line">  <span class="number">98</span>%  <span class="number">13260</span></span><br><span class="line">  <span class="number">99</span>%  <span class="number">13350</span> #<span class="number">99</span>%的请求在<span class="number">13.4</span>秒内返回</span><br><span class="line"> <span class="number">100</span>%  <span class="number">14023</span> (longest request)</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-Linux-scp-命令详解" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -1003,55 +1062,12 @@
 </article>
 
   
-    <article id="post-hello-world" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2024/04/15/hello-world/">Hello World</a>
-    </h1>
-  
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/blog/2024/04/15/hello-world/" class="article-date">
-  <time datetime="2024-04-15T11:26:40.969Z" itemprop="datePublished">2024-04-15</time>
-</a>
+
+  <nav id="page-nav">
     
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-cloud" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><div class="highlight-box"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="extend next" rel="next" href="/blog/page/2/">Next &amp;raquo;</a>
+  </nav>
 
 
 </section>
@@ -1080,6 +1096,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/04/22/ApacheBench%E5%8E%8B%E6%B5%8B/">ApacheBench压测</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/04/17/Linux-scp-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">Linux scp 命令详解</a>
           </li>
         
@@ -1093,10 +1113,6 @@
         
           <li>
             <a href="/blog/2024/04/17/%E9%83%A8%E5%88%86%E4%BD%8E%E7%BA%A7%E6%9C%AC%E5%8D%95%E5%88%B7%E4%B8%80%E5%9B%BE%E6%B5%81/">部分低级本单刷一图流</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/04/17/%E5%BE%85%E5%81%9A%E6%88%90%E5%B0%B1%E7%BB%9F%E8%AE%A1/">待做成就统计</a>
           </li>
         
       </ul>
@@ -1113,7 +1129,7 @@
       Tags
     </h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag"><i class="fa" aria-hidden="true">Hexo</i></a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Linux/" rel="tag"><i class="fa" aria-hidden="true">Linux</i></a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jw3/" rel="tag"><i class="fa" aria-hidden="true">jw3</i></a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ApacheBench/" rel="tag"><i class="fa" aria-hidden="true">ApacheBench</i></a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Hexo/" rel="tag"><i class="fa" aria-hidden="true">Hexo</i></a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Linux/" rel="tag"><i class="fa" aria-hidden="true">Linux</i></a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jw3/" rel="tag"><i class="fa" aria-hidden="true">jw3</i></a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%B5%8B%E8%AF%95/" rel="tag"><i class="fa" aria-hidden="true">测试</i></a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
   
@@ -1122,7 +1138,7 @@
   <div class="widget-box">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/blog/tags/jw3/" style="font-size: 20px;">jw3</a>
+      <a href="/blog/tags/ApacheBench/" style="font-size: 10px;">ApacheBench</a> <a href="/blog/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/blog/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/blog/tags/jw3/" style="font-size: 20px;">jw3</a> <a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">测试</a>
     </div>
   </div>
 
@@ -1131,7 +1147,7 @@
   <div class="widget-box">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/04/">April 2024</a><span class="archive-list-count">11</span></li></ul>
     </div>
   </div>
 
