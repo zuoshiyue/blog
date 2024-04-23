@@ -202,7 +202,8 @@ function Main()
 	--³Ô¶¦
 	if getopt("×Ô¶¯³Ô¶¦") and gettimer("³Ô¶¦¶ÁÌõ½áÊø") > 0.5 and nobuff("¹ÆÊ±") and cdleft(16) > 0.5 then
 		if life() < 0.7 or mana() < 0.8 then
-			interact("ÏÉÍõ¹Æ¶¦")
+			-- interact("ÏÉÍõ¹Æ¶¦")
+			interact(doodad("Ãû×Ö:ÏÉÍõ¹Æ¶¦"))
 		end
 	end
 	
